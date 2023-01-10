@@ -18,6 +18,32 @@ USE `hpfs`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `groups`
+--
+
+DROP TABLE IF EXISTS `groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `owner` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_admin_idx` (`owner`),
+  CONSTRAINT `users_admin` FOREIGN KEY (`owner`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groups`
+--
+
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `planning`
 --
 
@@ -145,6 +171,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `pw_hash` varchar(45) NOT NULL,
   `rank` int(11) NOT NULL DEFAULT '1',
+  `part` double NOT NULL DEFAULT '0',
   `phone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -157,6 +184,32 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_group`
+--
+
+DROP TABLE IF EXISTS `users_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users_group` (
+  `uid` int(11) NOT NULL,
+  `gid` int(11) NOT NULL,
+  KEY `users_group_member_idx` (`uid`),
+  KEY `group_group_member_idx` (`gid`),
+  CONSTRAINT `group_group_member` FOREIGN KEY (`gid`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `users_group_member` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_group`
+--
+
+LOCK TABLES `users_group` WRITE;
+/*!40000 ALTER TABLE `users_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -194,4 +247,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-09 16:22:27
+-- Dump completed on 2023-01-10 14:51:54
