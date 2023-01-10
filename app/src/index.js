@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import './style.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    );
-  }
-}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-render(<App />, document.getElementById('root'));

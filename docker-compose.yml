@@ -18,19 +18,14 @@ services:
             - ./api:/api
         networks:
             - code-network
-        ports:
-            - 8080:8080
         command: php -S 0.0.0.0:8080 -t /api
     app:
         container_name: frontend
         build:
             context: ./app/
-        command: npm start
+        command: sh -c "npm run start"
         volumes:
             - ./app/:/usr/app
-            - /usr/app/node_modules
-        ports:
-            - "3000:3000"
         networks:
             - code-network
     db:
@@ -47,8 +42,6 @@ services:
     adminer:
         image: adminer
         restart: always
-        ports:
-            - '5000:8080'
         environment:
             - PMA_ARBITRARY=1
         networks:
