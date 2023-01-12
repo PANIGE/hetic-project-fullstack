@@ -9,6 +9,10 @@ export default function Home() {
                         className={({isActive}) => { return isActive ? "activeLink" : ""}}
                     >Home</NavLink>
                     
+                    <NavLink to="/transaction" 
+                        className={({isActive}) => { return isActive ? "activeLink" : ""}}
+                    >transaction</NavLink>
+
                     <NavLink to="/planing" 
                         className={({isActive}) => { return isActive ? "activeLink" : ""}}
                     >Planing</NavLink>
