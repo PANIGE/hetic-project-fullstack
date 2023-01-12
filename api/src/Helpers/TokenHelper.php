@@ -2,14 +2,27 @@
 
 namespace App\Helpers;
 
+use App\Entities\User;
+use ReallySimpleJWT\Token;
+
 use App\Interfaces\IToken;
 
 class TokenHelper implements IToken
 {
-    public function GenerateToken():string
+    public function GenerateToken(User $user): string
     {
-        //generate random 32 character string while it doesn't exist in database
-        $token = bin2hex(random_bytes(16));
-        return $token; //bin2hex(random_bytes(16));
+        $payload = [
+            'iat' => time(),
+            'uid' => $user->getId(),
+            'email' => $user->getEmail(),
+            'first_name' => $user->getFirstName(),
+            'last_name' => $user->getLastName(),
+            'exp' => time() + 3600,
+        ];
+
+        $secret = 'gpD*m3R#5DyfhAde3*uq5DQ^77E9QkU2';
+
+        $token = Token::customPayload($payload, $secret);
+        return $token;
     }
 }

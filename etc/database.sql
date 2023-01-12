@@ -166,8 +166,8 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `last_name` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
   `email` varchar(255) NOT NULL,
   `pw_hash` varchar(45) NOT NULL,
   `rank` int(11) NOT NULL DEFAULT '1',
@@ -223,6 +223,7 @@ CREATE TABLE `webtokens` (
   `token` varchar(2000) NOT NULL,
   `user_id` int(11) NOT NULL,
   `request_ip` varchar(39) NOT NULL,
+  `created_at` bigint(20) NOT NULL,
   PRIMARY KEY (`token`),
   KEY `user_token_idx` (`user_id`),
   CONSTRAINT `user_token` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -247,4 +248,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-10 14:51:54
+-- Dump completed on 2023-01-12 14:20:25

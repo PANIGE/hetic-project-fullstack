@@ -7,9 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInit11e5b1480e32c8ffd43e3fc7762ccf36
 {
     public static $prefixLengthsPsr4 = array (
+        'R' => 
+        array (
+            'ReallySimpleJWT\\' => 16,
+        ),
         'A' => 
         array (
             'App\\Routes\\' => 11,
+            'App\\Managers\\' => 13,
             'App\\Interfaces\\' => 15,
             'App\\Helpers\\' => 12,
             'App\\Factories\\' => 14,
@@ -19,9 +24,17 @@ class ComposerStaticInit11e5b1480e32c8ffd43e3fc7762ccf36
     );
 
     public static $prefixDirsPsr4 = array (
+        'ReallySimpleJWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rbdwllr/reallysimplejwt/src',
+        ),
         'App\\Routes\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Routes',
+        ),
+        'App\\Managers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Managers',
         ),
         'App\\Interfaces\\' => 
         array (

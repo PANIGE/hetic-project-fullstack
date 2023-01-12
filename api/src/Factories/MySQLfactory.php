@@ -12,7 +12,7 @@ class MySQLFactory implements IDatabase
     private string $password;
     private string $database;
 
-    public function __construct(string $host = "db", string $user = "root", string $password = "password", string $database = "blog")
+    public function __construct(string $host = "db", string $user = "root", string $password = "password", string $database = "hpfs")
                                 /**/ 
     {
         $this->host = $host;

@@ -6,7 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ReallySimpleJWT\\' => array($vendorDir . '/rbdwllr/reallysimplejwt/src'),
     'App\\Routes\\' => array($baseDir . '/src/Routes'),
+    'App\\Managers\\' => array($baseDir . '/src/Managers'),
     'App\\Interfaces\\' => array($baseDir . '/src/Interfaces'),
     'App\\Helpers\\' => array($baseDir . '/src/Helpers'),
     'App\\Factories\\' => array($baseDir . '/src/Factories'),

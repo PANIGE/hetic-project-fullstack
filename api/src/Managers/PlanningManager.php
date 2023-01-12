@@ -48,5 +48,5 @@ class PlanningManager extends BaseManager{
             'comment' => $planning->getComment()
         ]);
         
-
+    }
 }

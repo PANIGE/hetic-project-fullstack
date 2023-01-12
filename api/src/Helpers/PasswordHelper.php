@@ -19,6 +19,6 @@ class PasswordHelper implements IPassword
      */
     public static function verifyPassword(string $password, string $hash): bool
     {
-        return password_verify($password, $hash);
+        return password_verify($password, $hash, PASSWORD_BCRYPT);
     }
 }

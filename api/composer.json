@@ -7,6 +7,7 @@
             "App\\Entities\\": "src/Entities",
             "App\\Factories\\": "src/Factories",
             "App\\Helpers\\": "src/Helpers",
+            "App\\Managers\\": "src/Managers",
             "App\\Interfaces\\": "src/Interfaces",
             "App\\Routes\\": "src/Routes"
         }
@@ -16,5 +17,7 @@
             "name": "PANIGE"
         }
     ],
-    "require": {}
+    "require": {
+        "rbdwllr/reallysimplejwt": "^5.0"
+    }
 }

@@ -2,8 +2,9 @@
 namespace App\Managers;
 use App\Entities\User;
 use App\Factories\MySQLFactory;
-use App\Helper\TokenHelper;
+use App\Helpers\TokenHelper;
 use App\Interfaces\IDatabase;
+use PDO;
 
 
 class TokenManager extends BaseManager
@@ -19,8 +20,16 @@ class TokenManager extends BaseManager
         $token->execute([
             'token' => $token
         ]);
-        $token = $token->fetch();
-        if ($token) {
+        $token = $token->fetch(PDO::FETCH_ASSOC);
+        if (!$token) {
+            return false;
+        }
+        if ($token["created_at"] < time() - 3600) {
+            $this->deleteToken($token);
+            return false;
+        }
+        if ($token["request_ip"] == getallheaders()['X-Forwarded-For']) {
+            
             return true;
         }
         return false;
@@ -33,17 +42,20 @@ class TokenManager extends BaseManager
         $query->execute();
         $user=$query->fetch(\PDO::FETCH_ASSOC);
         var_dump($user);
-        $userManager = new UserManagers(new MySQLFactory());
+        $userManager = new UserManager(new MySQLFactory());
         return $userManager->getUser($user['id']);
         
     }
 
-    public function stroreTokenForUser($token, $user_id)
+    public function stroreTokenForUser($token, $user_id, $ip)
     {
-        $token = $this->pdo->prepare('INSERT INTO tokens (token, user_id) VALUES (:token, :user_id)');
-        $token->execute([
+
+        $tokenReq = $this->pdo->prepare('INSERT INTO webtokens (token, user_id, request_ip, created_at) VALUES (:token, :user_id, :request_ip, :created_at)');
+        $tokenReq->execute([
             'token' => $token,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'request_ip' => $ip,
+            'created_at' => time()
         ]);
     }
 
@@ -55,10 +67,10 @@ class TokenManager extends BaseManager
         ]);
     }
 
-    public function create(){
+    public function GenerateToken(User $user){
         $TokenHelper=new TokenHelper();
         $token=$_COOKIE['token']??null;
-        $token ??= $TokenHelper->generateToken();
+        $token ??= $TokenHelper->generateToken($user);
         if(!isset($_COOKIE['token'])){
             setcookie('token',$token);
         }

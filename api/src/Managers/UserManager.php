@@ -3,10 +3,10 @@
 namespace App\Managers;
 
 use App\Entities\User;
-use App\Helper\PasswordHelper;
+use App\Helpers\PasswordHelper;
 use Generator;
 
-class UserManagers extends BaseManager
+class UserManager extends BaseManager
 {
     public function getAllUsers(){
     $query = $this->pdo->query("SELECT * FROM users");
@@ -27,19 +27,24 @@ class UserManagers extends BaseManager
         return new User($user);
     }
 
-    public function getUserFromName(string $username):User{
-        $query = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
+
+    public function GetUserByEmail(string $mail):User|null{
+        $query = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
+
         $query->execute(
             [
-                'username' => $username
+                'email' => $mail
             ]
         );
         $user = $query->fetch(\PDO::FETCH_ASSOC);
+        if (!$user) {
+            return null;
+        }
         return new User($user);
     }
 
-    public function createUser(User $user){
-        $query = $this->pdo->prepare("INSERT INTO users (first_name,last_name, password, email, role) VALUES (:username, :password, :email, :role)");
+    public function CreateUser(User $user){
+        $query = $this->pdo->prepare("INSERT INTO users (first_name, last_name, pw_hash, email) VALUES (:first_name, :last_name, :password, :email)");
         $query->execute(
             [
                 'first_name' => $user->getFirstName(),
@@ -74,7 +79,7 @@ class UserManagers extends BaseManager
     }
 
     public function login(string $username, string $password):bool{
-        $user = $this->getUserFromName($username);
+        $user = $this->GetUserByUsername($username);
         if($user->getId() === null){
             return false;
         }

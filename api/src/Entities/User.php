@@ -13,7 +13,9 @@ class User {
     private string $phone;
 
     public function __construct(array $user) {
-        $this->setID($user['id']);
+        if (isset($user['id'])) {
+            $this->setID($user['id']);
+        }
         $this->setLastName($user['last_name']);
         $this->setFirstName($user['first_name']);
         $this->setEmail($user['email']);

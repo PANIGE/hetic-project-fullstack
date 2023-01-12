@@ -6,7 +6,7 @@ WORKDIR /usr/app
 
 COPY package*.json ./
 
-RUN npm uptade
+RUN npm update
 
 COPY . .
 
