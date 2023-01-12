@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Helper;
+namespace App\Helpers;
 
 use App\Interfaces\IPassword;
-
 
 class PasswordHelper implements IPassword
 {

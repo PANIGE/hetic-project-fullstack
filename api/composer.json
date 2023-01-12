@@ -1,0 +1,20 @@
+{
+    "name": "root/api",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\Controllers\\": "src/Controllers",
+            "App\\Entities\\": "src/Entities",
+            "App\\Factories\\": "src/Factories",
+            "App\\Helpers\\": "src/Helpers",
+            "App\\Interfaces\\": "src/Interfaces",
+            "App\\Routes\\": "src/Routes"
+        }
+    },
+    "authors": [
+        {
+            "name": "PANIGE"
+        }
+    ],
+    "require": {}
+}

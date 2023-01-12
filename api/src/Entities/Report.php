@@ -9,6 +9,7 @@ class Report {
     public int $end;
     public string $title;
     public string $comment;
+    public array $transactions;
 
 
 //getter
@@ -24,6 +25,8 @@ public function getTitle(): string {return $this->title;}
 
 public function getComment(): string {return $this->comment;}
 
+public function getTransaction(): array {return $this->transactions;}
+
 //setter
 public function setId(int $id): void {$this->id = $id;}
 
@@ -36,5 +39,7 @@ public function setEnd(int $end): void {$this->end = $end;}
 public function setTitle(string $title): void {$this->title = $title;}
 
 public function setComment(string $comment): void {$this->comment = $comment;}
+
+public function setTransaction(array $transactions): void {$this->transactions = $transactions;}
 
 }
