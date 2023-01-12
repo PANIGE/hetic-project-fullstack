@@ -13,7 +13,9 @@ services:
             - code-network
     php:
         container_name: backend
-        image: php:fpm
+        build: 
+            context: ./api/
+            dockerfile: Dockerfile
         volumes:
             - ./api:/api
         networks:
