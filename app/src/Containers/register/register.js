@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 export default function register() {
     function handleClick(e) {
@@ -21,14 +22,38 @@ export default function register() {
     }
 
     return (
-        <div>
+        <div className='form'>
             <form onSubmit={handleClick}>
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" />
-                <label for="commentaire">Commentaire</label>
-                <input type="text" name="commentaire" id="commentaire" />
-                <button id="send" type="submit">Submit</button>
+                
+                <div className='div_input'>
+                    <input type="text" name="email" id="email" />
+                    <span></span>
+                    <label for="email">E-mail</label>
+                </div>
+
+                <div className='div_input'>
+                    <input type="text" name="mdp" id="mdp" />
+                    <span></span>
+                    <label for="mdp">Mot de passe</label>
+                </div>
+
+                <div className='div_input'>
+                    <input type="text" name="confirmMdp" id="conirmMdp" />
+                    <span></span>
+                    <label for="confirmMdp">Confirmer le mot de passe</label>
+                </div>
+                
+                <button id="send" type="submit">S'inscrire</button>
+
+                <NavLink to="/login/" 
+                className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
+            >Déjà un compte ?</NavLink>
+            
             </form>
-        </div>
+
+
+
+        </div> 
+        
     )
 }
