@@ -5,7 +5,7 @@ export default function report() {
     function handleClick(e) {
         e.preventDefault();
 
-        let sendData = fetch('http://localhost:3000/report/create', {
+        fetch('http://localhost:3000/report/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
