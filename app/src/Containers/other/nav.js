@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom'
 export default function Home() {
     return (
         <div>
-              <ul>
+              <ul className='nav'>
                     <NavLink to="/" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}}
+                        className={({isActive}) => { return isActive ? "activeLink" : ""}} id="navlink"
                     >Home</NavLink>
                     
                     <NavLink to="/transaction" 
@@ -14,11 +14,11 @@ export default function Home() {
                     >transaction</NavLink>
 
                     <NavLink to="/planing" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}}
+                        className={({isActive}) => { return isActive ? "activeLink" : ""}} id="navlink"
                     >Planing</NavLink>
 
                     <NavLink to="/report" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}}
+                        className={({isActive}) => { return isActive ? "activeLink" : ""}} id="navlink"
                     >Report</NavLink>
               </ul>
         </div>

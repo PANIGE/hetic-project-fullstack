@@ -16,18 +16,20 @@ export default function planing() {
                 </ul> 
             </div>
               
-            <ul>
+        
 
                 <NavLink to="/planing" 
                     className={({isActive}) => { return isActive ? "activeLink" : ""}}
-                >search</NavLink>
-                
-                <NavLink to="/planing/Create" 
-                    className={({isActive}) => { return isActive ? "activeLink" : ""}}
-                >Create</NavLink>
-            
-            </ul>
+                >search</NavLink>                
+           
+
+
             <Outlet />
+
+            <NavLink to="/planing/Create" 
+                    className={({isActive}) => { return isActive ? "activeLink" : ""}} id="createBtn">
+                        <button className="createBtn">Create</button>
+            </NavLink>
         </div>
     )
 }
