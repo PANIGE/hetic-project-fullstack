@@ -13,7 +13,7 @@ html {
 }
 
 *::-webkit-scrollbar-thumb{
-    background-color: #474747;
+    background-color: #8D5380;
     border-radius : 10px;
 }
 
@@ -70,7 +70,7 @@ a::after{
     height: 3px;
     width: 0%;
     transition: 0.5s;
-    background-color: #007FFF;
+    background-color: #AC72A0;
 }
 
 a:hover::after{
@@ -483,7 +483,7 @@ small{
 
 form .div_input {
     position: relative;
-    border-bottom: 2px solid #24D898;
+    border-bottom: 2px solid #AC72A0;
     margin: 15px 0;
 }
 
@@ -531,14 +531,14 @@ form .div_input {
     left: 0;
     width: 0%;
     height: 2px;
-    background: #24D898;
+    background: #8D5380;
     transition: .5s;
 }
 
 .div_input input:focus ~ label,
 .div_input input:valid ~ label {
     top: -5px;
-    color: #24D898;
+    color: #8D5380;
 }
 
 .div_input input:focus ~ span::before,
@@ -549,7 +549,7 @@ form .div_input {
 .div_input select:focus ~ label,
 .div_input select:valid ~ label {
     top: -5px;
-    color: #24D898;
+    color: #8D5380;
 }
 
 .div_input select:focus ~ span::before,
@@ -562,7 +562,7 @@ input::-webkit-datetime-edit {
 }
 
 input::-webkit-datetime-edit-text { 
-    color: #24D898; 
+    color: #AC72A0; 
     padding: 0 0.3em;
 }
 
