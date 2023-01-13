@@ -21,17 +21,17 @@ export default function report() {
         })
     }
 
-        return (
-            <div>
-                <form onSubmit={handleClick}>
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" />
-                    <label for="commentaire">Commentaire</label>
-                    <input type="text" name="commentaire" id="commentaire" />
-                    <button id="send" type="submit">Submit</button>
-                </form>
-            </div>
-        )
+    return (
+        <div>
+            <form onSubmit={handleClick}>
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" />
+                <label for="commentaire">Commentaire</label>
+                <input type="text" name="commentaire" id="commentaire" />
+                <button id="send" type="submit">Submit</button>
+            </form>
+        </div>
+    )
     
     
 }
