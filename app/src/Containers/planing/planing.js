@@ -1,35 +1,58 @@
-import React from 'react'
+import React ,{Component} from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
+import './style.css'
 
-export default function planing() {
-    return (
-        <div>
 
-            <div id='allPlaning'>
-                <h1>Planing title</h1>
-                <h1>Planing Commentaire</h1>
-                <h1>Planing date start</h1>
-                <h1>Planing date end</h1>
-                <ul>
-                    <li>transactions</li>
-                    <li>transactions</li>
-                </ul> 
+class planing extends Component {
+    
+    state = {
+        post: {}
+    }
+
+    componentDidMount() {
+
+        fetch('http://jsonplaceholder.typicode.com/todos/1')
+        .then((response) => {
+            return response.json()
+        })
+        .then((result) => {
+            this.setState({post: result})
+        })
+
+    }
+    render() {
+        return (
+            <div className='section'>
+
+                <h1>Planing</h1>
+
+                <div id='allPlaning'>
+                    <div className='card'>
+                        <h4>{this.state.post.title} | by  </h4>
+                        <div className='cardContent'>
+                            <div>
+                                <p>Planing Commentaire</p>
+                                <div>
+                                    <p>date start</p>
+                                    <p>date end</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>transation €</h4>
+                                <p>type</p>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                    
+                <NavLink to="/planing/Create" id='createBtn'
+                    className= {({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
+                >+</NavLink>
+                   
+                <Outlet />
             </div>
-              
-        
-
-                <NavLink to="/planing" 
-                    className={({isActive}) => { return isActive ? "activeLink" : ""}}
-                >search</NavLink>                
-           
-
-
-            <Outlet />
-
-            <NavLink to="/planing/Create" 
-                    className={({isActive}) => { return isActive ? "activeLink" : ""}}>
-                        <button className="createBtn">Create</button>
-            </NavLink>
-        </div>
-    )
+        )
+    }
 }
+
+export default planing

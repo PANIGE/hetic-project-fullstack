@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
 
 export default function report() {
 
@@ -22,14 +23,40 @@ export default function report() {
     }
 
     return (
-        <div>
+        <div className='form'>
             <form onSubmit={handleClick}>
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" />
-                <label for="commentaire">Commentaire</label>
-                <input type="text" name="commentaire" id="commentaire" />
+                
+                <div className='div_input'>
+                    <input type="text" name="title" id="title" />
+                    <span></span>
+                    <label for="title">Title</label>
+                </div>
+
+                <div className='div_input'>
+                    <input type="text" name="commentaire" id="commentaire" />
+                    <span></span>
+                    <label for="commentaire">Commentaire</label>
+                </div>
+
+                <div className='div_input'>
+                    <input type="date" name="dateMin" id="dateMin" required />
+                    <span></span>
+                    <label for="dateMin">date min</label>
+                </div>
+
+                <div className='div_input'>
+                    <input type="date" name="dateMax" id="dateMax" required />
+                    <span></span>
+                    <label for="dateMin">date max</label>
+                </div>
+                
                 <button id="send" type="submit">Submit</button>
             </form>
+
+            <NavLink to="/report/" id='searchBtn'
+                className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
+            >-</NavLink>
+                    
         </div>
     )
     

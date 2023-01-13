@@ -22,7 +22,9 @@ class report extends Component {
 
     render() {
         return (
-            <div>
+            <div className='section'>
+
+                <h1>Report</h1>
                 
                 <div id='allPlaning'>
                     <div className='card'>
@@ -43,17 +45,10 @@ class report extends Component {
                     </div>
                 </div>
 
-                <ul>
-
-                    <NavLink to="/report" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}}
-                    >search</NavLink>
-                    
-                    <NavLink to="/report/Create" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}}
-                    ><button className="createBtn">Create</button></NavLink>
+                <NavLink to="/report/Create" id='createBtn'
+                    className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
+                >+</NavLink>
                 
-                </ul>
                 <Outlet />
             </div>
         )
