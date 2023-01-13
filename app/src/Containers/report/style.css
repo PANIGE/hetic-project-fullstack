@@ -37,3 +37,52 @@
     height: 100%;
     padding: 5px;
 }
+
+.section{
+    position: relative;
+    height: 100%;
+    margin: 5vw;
+}
+
+#createBtn{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 50px;
+    height: 55px;
+    border-radius: 10px;
+    background: rgba(38, 38, 38, 0.75);
+    color: white;
+    font-size: 40px;
+    border: white 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchBtn{
+    position: fixed;
+    bottom: -20px;
+    right: -20px;
+    /* padding: 5px 15px; */
+    border: none;
+    width: 50px;
+    height: 55px;
+    border-radius: 10px;
+    background: rgba(38, 38, 38, 0.75);
+    color: white;
+    font-size: 40px;
+    border: white 1px solid;
+    display: flex;
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+}
+
+.sectionLink{
+    display: none !important;
+}
+
+.vueLink{
+    display: flex;
+}
