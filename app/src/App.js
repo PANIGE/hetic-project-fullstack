@@ -15,8 +15,6 @@ import PlaningId from './Containers/planing/id';
 import PlaningCreate from './Containers/planing/create';
 import './App.css';
 
-
-
 function App() {
 
     return (

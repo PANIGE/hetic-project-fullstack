@@ -1,5 +1,6 @@
 import React ,{Component} from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
+import './style.css'
 
 class report extends Component {
     
@@ -24,14 +25,22 @@ class report extends Component {
             <div>
                 
                 <div id='allPlaning'>
-                    <h1>Planing {this.state.post.title}</h1>
-                    <h1>Planing Commentaire</h1>
-                    <h1>Planing date start</h1>
-                    <h1>Planing date end</h1>
-                    <ul>
-                        <li>transactions</li>
-                        <li>transactions</li>
-                    </ul> 
+                    <div className='card'>
+                        <h4>{this.state.post.title} | by  </h4>
+                        <div className='cardContent'>
+                            <div>
+                                <p>Planing Commentaire</p>
+                                <div>
+                                    <p>date start</p>
+                                    <p>date end</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>transation €</h4>
+                                <p>type</p>
+                            </div> 
+                        </div>
+                    </div>
                 </div>
 
                 <ul>
