@@ -27,7 +27,7 @@ export default function planing() {
             <Outlet />
 
             <NavLink to="/planing/Create" 
-                    className={({isActive}) => { return isActive ? "activeLink" : ""}} id="createBtn">
+                    className={({isActive}) => { return isActive ? "activeLink" : ""}}>
                         <button className="createBtn">Create</button>
             </NavLink>
         </div>

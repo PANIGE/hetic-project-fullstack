@@ -6,7 +6,7 @@ export default function Home() {
         <div>
               <ul className='nav'>
                     <NavLink to="/" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}} id="navlink"
+                        className={({isActive}) => { return isActive ? "activeLink" : ""}} 
                     >Home</NavLink>
                     
                     <NavLink to="/transaction" 
@@ -14,11 +14,11 @@ export default function Home() {
                     >transaction</NavLink>
 
                     <NavLink to="/planing" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}} id="navlink"
+                        className={({isActive}) => { return isActive ? "activeLink" : ""}} 
                     >Planing</NavLink>
 
                     <NavLink to="/report" 
-                        className={({isActive}) => { return isActive ? "activeLink" : ""}} id="navlink"
+                        className={({isActive}) => { return isActive ? "activeLink" : ""}} 
                     >Report</NavLink>
               </ul>
         </div>

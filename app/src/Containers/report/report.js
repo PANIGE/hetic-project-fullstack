@@ -42,7 +42,7 @@ class report extends Component {
                     
                     <NavLink to="/report/Create" 
                         className={({isActive}) => { return isActive ? "activeLink" : ""}}
-                    >Create</NavLink>
+                    ><button className="createBtn">Create</button></NavLink>
                 
                 </ul>
                 <Outlet />
