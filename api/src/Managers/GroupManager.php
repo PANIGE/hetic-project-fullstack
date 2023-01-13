@@ -2,7 +2,7 @@
 
 namespace App\Managers;
 
-use App\Entity\Group;
+use App\Entities\Group;
 use App\Managers\BaseManager;
 use App\Interfaces\IDatabase;
 use App\Factories\MySQLFactory;
@@ -27,6 +27,19 @@ class GroupManager extends BaseManager{
                 ':owner' => $group->getOwner()
             ]);
             
+        }
+
+        public function getGroupUsers($gid) {
+            $query = "SELECT u.id, FROM `users_group` ug WHERE ug.gid = :id";
+            $query->execute([':gid' => $gid]);
+            $users = $query->fetchAll();
+
+            $userManager = new UserManager($this->pdo);
+            $res = [];
+            foreach($users as $user){
+                $res[] = $userManager->getUserById($user['id']);
+            }
+            return $res;
         }
 
         public function getUserGroup(int $user_id){

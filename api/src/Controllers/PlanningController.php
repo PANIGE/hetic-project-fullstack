@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Entities\Planning;
 use App\Routes\Route;
 use App\Managers\PlanningManager;
+use App\Managers\TokenManager;
+use App\Managers\UserManager;
 
 #[Route('/plannings?/([0-9]+|new)?')]
 class PlanningController extends BaseController {
@@ -33,6 +35,10 @@ class PlanningController extends BaseController {
 
     public function create() {
         $this->EnsurePostParameters("group_id", "begin", "end", "title", "comment", "objective");
+        $this->EnsureLogin();
+        $tokenManager = new TokenManager($this->factory);
+        $user = $tokenManager->getUserFromCookies();
+
         $planning = new Planning();
         $planning->setGroupId($_POST['group_id']);
         $planning->setBegin($_POST['begin']);
@@ -40,6 +46,7 @@ class PlanningController extends BaseController {
         $planning->setTitle($_POST['title']);
         $planning->setComment($_POST['comment']);
         $planning->setObjectif($_POST['objective']);
+        $planning->setEmitter($user->getId());
 
         $planningManager = new PlanningManager($this->factory);
         $planningManager->createPlanning($planning);

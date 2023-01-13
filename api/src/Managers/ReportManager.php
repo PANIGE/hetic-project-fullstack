@@ -5,6 +5,7 @@ use App\Managers\BaseManager;
 use App\Factories\MySQLFactory;
 use App\Entities\Report;
 use App\Interfaces\IDatabase;
+use PDO;
 
  class ReportManager extends BaseManager{
     public function __construct(IDatabase $factory)
@@ -60,5 +61,19 @@ use App\Interfaces\IDatabase;
         $query->execute([
             'id' => $id
         ]);
+    }
+
+    public function searchReport($search, $limit, $offset): array {
+        $query=$this->pdo->prepare("SELECT * FROM reports WHERE title LIKE :search LIMIT :limit OFFSET :offset ");
+        $query->bindValue(':limit',intval($limit), PDO::PARAM_INT);
+        $query->bindValue(':offset',intval($offset), PDO::PARAM_INT);
+        $query->bindValue(':search','%'.$search.'%', PDO::PARAM_STR);
+        $query->execute();
+        $reports=$query->fetchAll(PDO::FETCH_ASSOC);
+        $res = [];
+        foreach ($reports as $planning) {
+            $res[]= new Report($planning);
+        }
+        return $res;
     }
 }
