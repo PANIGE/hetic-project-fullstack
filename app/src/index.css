@@ -59,7 +59,17 @@ a{
     font-size:1vw;
     color: white;
     text-decoration: none;
+    margin-right: 30px;
 }
+
+a:hover{
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: #007FFF;
+
+}
+
 
 li{
     display: block;
