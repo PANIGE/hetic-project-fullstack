@@ -10,6 +10,7 @@ class Planning{
     public float $objectif;
     public string $title;
     public string $comment;
+    public int $group_id;
 
 //getter
 public function getId(): int{return $this->id;}
@@ -26,6 +27,8 @@ public function getTitle(): string{return $this->title;}
 
 public function getComment(): string{return $this->comment;}
 
+public function getGroupId(): int{return $this->group_id;}
+
 //setter
 public function setId(int $id): void{$this->id = $id;}
 
@@ -40,5 +43,7 @@ public function setObjectif(float $objectif): void{$this->objectif = $objectif;}
 public function setTitle(string $title): void{$this->title = $title;}
 
 public function setComment(string $comment): void{$this->comment = $comment;}
+
+public function setGroupId(int $group_id): void{$this->group_id = $group_id;}
 
 }

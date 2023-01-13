@@ -9,12 +9,22 @@ use Generator;
 class UserManager extends BaseManager
 {
     public function getAllUsers(){
-    $query = $this->pdo->query("SELECT * FROM users");
-    $users = $query->fetchAll(\PDO::FETCH_ASSOC);
-    foreach ($users as $user) {
-        yield new User($user);
+        $query = $this->pdo->query("SELECT * FROM users");
+        $users = $query->fetchAll(\PDO::FETCH_ASSOC);
+        foreach ($users as $user) {
+            yield new User($user);
+        }
     }
-}
+
+    public function getFilteredUsers(int $gid) {
+        $query = $this->pdo->prepare("SELECT * FROM users u LEFT JOIN users_group ug ON ug.uid = u.id LEFT JOIN groups g on ug.gid = g.id WHERE g.id = :gid");
+        $query->execute([':gid' => $gid]);
+        $users = $query->fetchAll(\PDO::FETCH_ASSOC);
+        foreach ($users as $user) {
+            yield new User($user);
+        }
+    }
+
 
     public function getUser($id):User{
         $query = $this->pdo->prepare("SELECT * FROM users WHERE id = $id");

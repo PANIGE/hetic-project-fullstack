@@ -1,5 +1,6 @@
 <?php
-
+ 
+namespace App\Managers;
 use App\Managers\BaseManager;
 use App\Factories\MySQLFactory;
 use App\Entities\Report;
@@ -11,8 +12,9 @@ use App\Interfaces\IDatabase;
         parent::__construct($factory);
     }
     
-    public function getReports(){
-       $query = $this->pdo->query("SELECT * FROM reports");
+    public function getReports(int $gid){
+       $query = $this->pdo->query("SELECT * FROM reports WHERE group_id = :id");
+         $query->execute(['id' => $gid]);
        $reports = $query->fetchAll();
        foreach($reports as $report){
            yield new Report($report);
@@ -42,13 +44,14 @@ use App\Interfaces\IDatabase;
     }
 
     public function createReport( Report $report){
-       $query=$this->pdo->prepare("INSERT INTO reports (emitter, begins , end , title , comment) VALUES (:emitter, :begin, :end, :title, :comment)");
+       $query=$this->pdo->prepare("INSERT INTO reports (emitter, begins , end , title , comment, group_id) VALUES (:emitter, :begin, :end, :title, :comment, :group_id)");
        $query->execute([
            'emitter' => $report->getEmitter(),
            'begin' => $report->getBegin(),
            'end' => $report->getEnd(),
            'title' => $report->getTitle(),
-           'comment' => $report->getComment()
+           'comment' => $report->getComment(),
+              'group_id' => $report->getGroupId()
        ]);
     }
    

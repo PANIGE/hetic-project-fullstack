@@ -31,7 +31,7 @@ CREATE TABLE `groups` (
   PRIMARY KEY (`id`),
   KEY `users_admin_idx` (`owner`),
   CONSTRAINT `users_admin` FOREIGN KEY (`owner`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `groups` (
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+INSERT INTO `groups` VALUES (1,'panini',1);
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,6 +54,7 @@ DROP TABLE IF EXISTS `planning`;
 CREATE TABLE `planning` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `emitter` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `begin` bigint(20) NOT NULL,
   `end` bigint(20) NOT NULL,
   `objective` double NOT NULL,
@@ -60,8 +62,10 @@ CREATE TABLE `planning` (
   `content` varchar(2000) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `planning_emitter_idx` (`emitter`),
-  CONSTRAINT `planning_emitter` FOREIGN KEY (`emitter`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `planning_group_idx` (`group_id`),
+  CONSTRAINT `planning_emitter` FOREIGN KEY (`emitter`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `planning_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,13 +87,16 @@ DROP TABLE IF EXISTS `report`;
 CREATE TABLE `report` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `emitter` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `begin` bigint(20) NOT NULL,
   `end` bigint(20) NOT NULL,
   `title` varchar(200) NOT NULL,
   `comment` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `report_emitter_idx` (`emitter`),
-  CONSTRAINT `report_emitter` FOREIGN KEY (`emitter`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `report_group_idx` (`group_id`),
+  CONSTRAINT `report_emitter` FOREIGN KEY (`emitter`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `report_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -113,15 +120,18 @@ CREATE TABLE `transactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `emitter` int(11) NOT NULL,
   `type` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `value` double NOT NULL,
   `reason` varchar(2000) NOT NULL,
   `unix` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `emitter_id_idx` (`emitter`),
   KEY `transac_type_idx` (`type`),
+  KEY `transac_group_idx` (`group_id`),
   CONSTRAINT `emitter_id` FOREIGN KEY (`emitter`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `transac_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `transac_type` FOREIGN KEY (`type`) REFERENCES `transactions_types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +155,7 @@ CREATE TABLE `transactions_types` (
   `name_short` varchar(4) NOT NULL,
   `name_full` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,6 +164,7 @@ CREATE TABLE `transactions_types` (
 
 LOCK TABLES `transactions_types` WRITE;
 /*!40000 ALTER TABLE `transactions_types` DISABLE KEYS */;
+INSERT INTO `transactions_types` VALUES (1,'AAAA','BBBB');
 /*!40000 ALTER TABLE `transactions_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,12 +180,12 @@ CREATE TABLE `users` (
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `pw_hash` varchar(45) NOT NULL,
+  `pw_hash` varchar(250) NOT NULL,
   `rank` int(11) NOT NULL DEFAULT '1',
   `part` double NOT NULL DEFAULT '0',
   `phone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,6 +194,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'NICOLAS','ALARY','EDTRFYTUGYHIUOJPO','ZDZDZD',3,0,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,6 +221,7 @@ CREATE TABLE `users_group` (
 
 LOCK TABLES `users_group` WRITE;
 /*!40000 ALTER TABLE `users_group` DISABLE KEYS */;
+INSERT INTO `users_group` VALUES (1,1);
 /*!40000 ALTER TABLE `users_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-12 14:20:25
+-- Dump completed on 2023-01-13 14:40:45

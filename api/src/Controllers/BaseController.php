@@ -76,6 +76,7 @@ class BaseController implements IHandler
     }
 
     public function EnsureGetParameters(...$Args) {
+        $missing = [];
         foreach ($Args as $arg) {
             if (!isset($_GET[$arg])) {
                 $missing[] = $arg;

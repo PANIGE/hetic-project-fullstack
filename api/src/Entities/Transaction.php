@@ -9,6 +9,7 @@ class Transaction{
     public float $value;
     public string $reason;
     public int $unix;
+    public int $group_id;
 
 //getter
 public function getId(): int{return $this->id;}
@@ -23,6 +24,8 @@ public function getReason(): string{return $this->reason;}
 
 public function getUnix(): int{return $this->unix;}
 
+public function getGroupId(): int{return $this->group_id;}
+
 //setter
 
 public function setId(int $id): void{$this->id = $id;}
@@ -36,5 +39,7 @@ public function setValue(float $value): void{$this->value = $value;}
 public function setReason(string $reason): void{$this->reason = $reason;}
 
 public function setUnix(int $unix): void{$this->unix = $unix;}
+
+public function setGroupId(int $group_id): void{$this->group_id = $group_id;}
 
 }
