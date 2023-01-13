@@ -27,13 +27,13 @@ export default function report() {
             <form onSubmit={handleClick}>
                 
                 <div className='div_input'>
-                    <input type="text" name="title" id="title" />
+                    <input type="text" name="title" id="title" required />
                     <span></span>
                     <label for="title">Title</label>
                 </div>
 
                 <div className='div_input'>
-                    <input type="text" name="commentaire" id="commentaire" />
+                    <input type="text" name="commentaire" id="commentaire" required />
                     <span></span>
                     <label for="commentaire">Commentaire</label>
                 </div>
@@ -50,7 +50,8 @@ export default function report() {
                     <label for="dateMin">date max</label>
                 </div>
                 
-                <button id="send" type="submit">Submit</button>
+                <input type="submit" id="send" value="Submit"/>
+                
             </form>
 
             <NavLink to="/report/" id='searchBtn'

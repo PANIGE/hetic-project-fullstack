@@ -28,7 +28,10 @@ class report extends Component {
                 
                 <div id='allPlaning'>
                     <div className='card'>
-                        <h4>{this.state.post.title} | by  </h4>
+                        <div className='cardTitle'>
+                            <h4>{this.state.post.title} | by  </h4>
+                            <p>type</p>
+                        </div>
                         <div className='cardContent'>
                             <div>
                                 <p>Planing Commentaire</p>
@@ -39,7 +42,6 @@ class report extends Component {
                             </div>
                             <div>
                                 <h4>transation €</h4>
-                                <p>type</p>
                             </div> 
                         </div>
                     </div>

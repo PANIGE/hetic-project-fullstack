@@ -49,7 +49,8 @@ export default function report() {
                     <label for="dateMin">date max</label>
                 </div>
                 
-                <button id="send" type="submit">Submit</button>
+                <input type="submit" id="send" value="Submit"/>
+                
             </form>
 
             <NavLink to="/planing/" id='searchBtn'

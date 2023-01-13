@@ -530,7 +530,7 @@ form .div_input {
     top: 40px;
     left: 0;
     width: 0%;
-    height: 2px;
+    height: 3px;
     background: #8D5380;
     transition: .5s;
 }
@@ -557,6 +557,18 @@ form .div_input {
     width: 100%;
 }
 
+.div_input input[type=date] ~ label,
+.div_input input[type=date] ~ label {
+    top: -5px;
+    color: #8D5380;
+}
+
+.div_input input[type=date] ~ span::before,
+.div_input input[type=date] ~ span::before {
+    width: 100%;
+}
+
+
 input::-webkit-datetime-edit {
      padding: 1em; 
 }
@@ -575,6 +587,17 @@ input::-webkit-calendar-picker-indicator {
  
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+input[type=submit]{
+    color: #FFFFFF;
+    background-color: #AC72A0 ;
+    border: none;
+    border-radius: 10px;
+    transition: 0.5s all ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 10px;
+    padding: 10px 20px ;
+    cursor: pointer;
 }
 
 .form{
