@@ -62,7 +62,7 @@ a{
     text-decoration: none;
 }
 
-a::after{
+.nav a::after{
     content: '';
     position: absolute;
     bottom: -3px;
@@ -73,7 +73,7 @@ a::after{
     background-color: #AC72A0;
 }
 
-a:hover::after{
+.nav a:hover::after{
     width: 100%;
 }
 

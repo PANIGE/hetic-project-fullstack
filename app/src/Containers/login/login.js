@@ -37,7 +37,7 @@ export default function report() {
                     <label for="mdp">Mot de passe</label>
                 </div>
                 
-                <button id="send" type="submit">Se connecter</button>
+                <input type="submit" id="send" value="Se connecter"/>
             </form>
         </div>
     )

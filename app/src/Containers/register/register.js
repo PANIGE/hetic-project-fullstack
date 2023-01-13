@@ -43,12 +43,12 @@ export default function register() {
                     <label for="confirmMdp">Confirmer le mot de passe</label>
                 </div>
                 
-                <button id="send" type="submit">S'inscrire</button>
+                <input type="submit" id="send" value="S'inscrire"/>
 
                 <NavLink to="/login/" 
-                className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
+                className={({isActive}) => { return isActive ? "sectionLink" : " "}}
             >Déjà un compte ?</NavLink>
-            
+
             </form>
 
 
