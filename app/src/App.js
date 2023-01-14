@@ -10,6 +10,7 @@ import Planing from './Containers/planing/planing';
 import Navbar from './Containers/other/nav';
 import Footer from './Containers/other/footer';
 import Transaction from './Containers/transaction/transaction';
+import TransactionCreate from './Containers/transaction/create';
 import ReportId from './Containers/report/id';
 import ReportCreate from './Containers/report/create';
 import PlaningId from './Containers/planing/id';
@@ -35,7 +36,8 @@ function App() {
                     <Route path="/report/:id" element={<ReportId />} />
                     <Route path="/report/create" element={<ReportCreate />} />
                 </Route>
-                <Route path="/transaction" element={<Transaction />} />
+                    <Route path="/transaction" element={<Transaction />} />
+                    <Route path="/transaction/create" element={<TransactionCreate />} />
                 <Route path="/*" element={<Err />} />
             </Routes>
             <Footer />

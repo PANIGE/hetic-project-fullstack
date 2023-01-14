@@ -27,16 +27,31 @@ export default function report() {
         <div className='form'>
             <form onSubmit={handleClick}>
                 <div className='div_input '>
-                    <input type="text" name="email" id="email" required />
+                    <select name="type" id="type">
+                        <option value="dog">1</option>
+                        <option value="cat">2</option>
+                        <option value="hamster">3</option>
+                    </select>  
+                    <label for="type">Choose a type:</label>
+                </div>
+
+                <div className='div_input '>
+                    <input type="text" name="reason" id="reason" required />
                     <span></span>
-                    <label for="email">E-mail</label>    
+                    <label for="reason">Reason</label>    
+                </div>
+
+                <div className='div_input '>
+                    <input type="text" name="value" id="value" required />
+                    <span></span>
+                    <label for="value">Value</label>    
                 </div>
                 
                 <input type="submit" id="send" value="Submit"/>
                 
             </form>
 
-            <NavLink to="/admin/" id='searchBtn'
+            <NavLink to="/transaction/" id='searchBtn'
                 className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
             >-</NavLink>
         
