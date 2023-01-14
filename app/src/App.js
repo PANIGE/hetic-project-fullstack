@@ -1,6 +1,7 @@
 import { Routes ,Route } from 'react-router-dom';
 import Home from './Containers/home/home';
 import Admin from './Containers/admin/admin';
+import AdminCreate from './Containers/admin/create';
 import Err from './Containers/err/err';
 import Login from './Containers/login/login';
 import Register from './Containers/register/register';
@@ -22,7 +23,8 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/admin" element={<Admin />} />
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/admin/create" element={<AdminCreate />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/planing" element={<Planing />}>

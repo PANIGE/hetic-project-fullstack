@@ -1,13 +1,12 @@
 import React from 'react'
-import './login.css'
-
+import { NavLink, Outlet } from 'react-router-dom'
 
 export default function report() {
-
+    
     function handleClick(e) {
         e.preventDefault();
-            
-            fetch('http://localhost:3000/report/create', {
+
+        fetch('http://localhost:3000/admin/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,26 +23,24 @@ export default function report() {
     }
 
     return (
-        <div className='form_login'>
+        <div className="adminCreate">
+        <div className='form'>
             <form onSubmit={handleClick}>
-                
-                <div className='div_input'>
-                    <input type="text" name="email" id="email" />
+                <div className='div_input '>
+                    <input type="text" name="email" id="email" required />
                     <span></span>
-                    <label for="email">E-mail</label>
-                </div>
-
-                <div className='div_input'>
-                    <input type="text" name="mdp" id="mdp" />
-                    <span></span>
-                    <label for="mdp">Mot de passe</label>
+                    <label for="title">E-mail</label>    
                 </div>
                 
-                <input type="submit" id="send" value="Se connecter"/>
+                <input type="submit" id="send" value="Submit"/>
+                
             </form>
-        </div>
+
+            <NavLink to="/admin/" id='searchBtn'
+                className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
+            >-</NavLink>
         
+        </div>
+        </div>
     )
-    
-    
 }

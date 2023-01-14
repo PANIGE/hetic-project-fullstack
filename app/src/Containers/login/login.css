@@ -1,0 +1,25 @@
+.form_login{
+    position: fixed;
+    top : 0;
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(38, 38, 38);
+    z-index: 2;  
+}
+
+.form_login form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form_login form div{
+    width: 20%;
+}

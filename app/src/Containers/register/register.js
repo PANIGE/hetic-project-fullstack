@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import './register.css'
 
 export default function register() {
     function handleClick(e) {
@@ -22,7 +23,7 @@ export default function register() {
     }
 
     return (
-        <div className='form'>
+        <div className='form_login'>
             <form onSubmit={handleClick}>
                 
                 <div className='div_input'>
@@ -50,7 +51,7 @@ export default function register() {
             >Déjà un compte ?</NavLink>
 
             </form>
-
+            
 
 
         </div> 
