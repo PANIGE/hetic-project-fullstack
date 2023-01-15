@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState , useNavigate} from 'react'
 import { NavLink} from 'react-router-dom'
 
 export default function Planing() {
@@ -37,7 +37,7 @@ export default function Planing() {
     function handleClick(e) {
         e.preventDefault();
 
-        fetch('http://localhost:3000/planing/create', {
+        fetch('Plannings/New', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,6 +52,18 @@ export default function Planing() {
         .then((response) => {
             return response.json()
         })
+
+        handleNavigate();
+    }
+
+    function handleNavigate() {
+        let navigate = useNavigate();
+
+        try {
+            navigate("/planing/"); // Omit optional second argument
+        } catch (error) {
+            navigate("/err", { state: { message: "Failed to submit form" } }); // Pass optional second argument
+        }
     }
 
     return (

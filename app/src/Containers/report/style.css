@@ -97,14 +97,51 @@
     gap: 20px;
 }
 
+.idCard{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(5px);
+    right: 50%;
+    z-index: 2;
+    transition: all 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.idCard .card{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 20px;
+    background-color: rgba(38, 38, 38, 0.5);
+    backdrop-filter: blur(15px);
+    z-index: 3;
+    transition: all 1s ease-in-out;
+    padding: 20px;
+    position: relative;
+}
+
 @media screen and (max-width: 1200px){
     #allReport{
         grid-template-columns: 1fr 1fr;
     }
 }
-    
+
 @media screen and (max-width: 800px){
     #allReport{
         grid-template-columns: 1fr;
+    }
+
+    .form{
+        top: 10vw;
+        left: 10vw;
+        right: 10vw;
+        bottom: 10vw;
     }
 }

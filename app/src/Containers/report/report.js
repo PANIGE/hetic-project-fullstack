@@ -2,59 +2,68 @@ import React ,{Component} from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import './style.css'
 
-class report extends Component {
+export default function Planing()  {
     
-    state = {
-        post: {}
-    }
-
-    componentDidMount() {
-
-        fetch('http://jsonplaceholder.typicode.com/todos/1')
-        .then((response) => {
-            return response.json()
-        })
-        .then((result) => {
-            this.setState({post: result})
-        })
-
-    }
-
-    render() {
-        return (
-            <div className='section'>
-
-                <h1>Report</h1>
-                
-                <div id='allReport'>
-                    <div className='card'>
-                        <div className='cardTitle'>
-                            <h4>{this.state.post.title} | by  </h4>
-                            <p>type</p>
-                        </div>
-                        <div className='cardContent'>
-                            <div>
-                                <p>Planing Commentaire</p>
-                                <div>
-                                    <p>date start</p>
-                                    <p>date end</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>transation €</h4>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-
-                <NavLink to="/report/Create" id='createBtn'
-                    className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
-                >+</NavLink>
-                
-                <Outlet />
-            </div>
+    const [data,setData]=useState([]);
+    const getData=()=>{
+        fetch('/api/report'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+        }
         )
+        .then(function(response){
+            console.log(response)
+            return response.json();
+        })
+        .then(function(myJson) {
+            console.log(myJson);
+            setData(myJson)
+        });
     }
-}
+    useEffect(()=>{
+        getData()
+    },[])
+        
+    return (
+        <div className='section'>
 
-export default report
+            <h1>Report</h1>
+            
+            <div id='allReport'>
+
+                {data.map((post) => {
+                    <NavLink to={post.id}>
+                        <div className='card'>
+                            <div className='cardTitle'>
+                                <h4>{post.title} | by  </h4>
+                                <p>{post.type}</p>
+                            </div>
+                            <div className='cardContent'>
+                                <div>
+                                    <p>{post.comment}</p>
+                                    <div>
+                                        <p>{post.dateStart}</p>
+                                        <p>{post.dateEnd}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4>{post.montant} €</h4>
+                                </div> 
+                            </div>
+                        </div>
+                    </NavLink>
+                })}
+
+            </div>
+
+            <NavLink to="/report/Create" id='createBtn'
+                className={({isActive}) => { return isActive ? "sectionLink" : "vueLink"}}
+            >+</NavLink>
+            
+            <Outlet />
+        </div>
+    )
+}

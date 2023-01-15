@@ -36,7 +36,7 @@ export default function Register() {
     function handleClick(e) {
         e.preventDefault();
 
-        fetch('http://localhost:3000/planing/create', {
+        fetch('Report/New', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

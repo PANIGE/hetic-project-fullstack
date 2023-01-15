@@ -1,4 +1,4 @@
-import React , {useState}  from 'react'
+import React , {useState , useNavigate }  from 'react'
 import { NavLink} from 'react-router-dom'
 import './login.css'
 
@@ -37,20 +37,33 @@ export default function Login() {
         .then((response) => {
             return response.json()
         })
+        handleNavigate();
     }
+
+    function handleNavigate() {
+        let navigate = useNavigate();
+
+        try {
+            navigate("/planing/"); // Omit optional second argument
+        } catch (error) {
+            navigate("/err", { state: { message: "Failed to submit form" } }); // Pass optional second argument
+        }
+    }
+    
+    
 
     return (
         <div className='form_login'>
             <form onSubmit={handleClick}>
                 
                 <div className='div_input'>
-                    <input type="text" name="email"  value={email} onChange={handleEmail} id="email" required />
+                    <input type="mail" name="email"  value={email} onChange={handleEmail} id="email" required />
                     <span></span>
                     <label for="email">E-mail</label>
                 </div>
 
                 <div className='div_input'>
-                    <input type="text" name="mdp"  value={password} onChange={handleMpd}  id="mdp" required />
+                    <input type="password" name="mdp"  value={password} onChange={handleMpd}  id="mdp" required />
                     <span></span>
                     <label for="mdp">Mot de passe</label>
                 </div>
