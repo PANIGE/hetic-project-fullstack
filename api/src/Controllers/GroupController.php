@@ -10,7 +10,7 @@ use App\Managers\UserManager;
 use App\Routes\Route;
 
 #[Route('/groups/(\d+|new)/(\d+|add)?')]
-class LoginController extends BaseController {
+class GroupController extends BaseController {
     public function Get($params) {
         $group_id = $params[1];
         $user_id = $params[2];
@@ -31,7 +31,7 @@ class LoginController extends BaseController {
         $user_id = $params[2];
 
         if ($group_id != "new" && $user_id == "add") {
-            $this->AddUser($group_id, $user_id);
+            $this->AddUser($group_id);
         } else {
             http_response_code(405);
             echo json_encode(array("status" => 405, "message" => "Method not allowed."));
