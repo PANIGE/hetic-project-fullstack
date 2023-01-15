@@ -1,0 +1,38 @@
+#allMember{
+    background-color: rgba(38, 38, 38, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 30px 10px 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 20px;
+}
+
+
+.cardMember .cardMemberContent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.cardMember .cardMemberContent div:first-child div:first-child{
+    border-right: 1px solid #FFFFFF;
+}
+
+.cardMember .cardMemberContent div div{
+    border-right:  none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.cardMember .cardMemberContent div,
+.cardMember .cardMemberContent ul{
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+.adminCreate .form form div{
+    width: 20%;
+}

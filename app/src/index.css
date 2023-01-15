@@ -62,6 +62,10 @@ a{
     text-decoration: none;
 }
 
+.nav a {
+    margin-right: 15px;
+}
+
 .nav a::after{
     content: '';
     position: absolute;
@@ -77,6 +81,9 @@ a{
     width: 100%;
 }
 
+.nav .activeLink {
+    color: #AC72A0;
+}
 
 
 li{
@@ -598,6 +605,7 @@ input[type=submit]{
     box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 10px;
     padding: 10px 20px ;
     cursor: pointer;
+    margin-top: 15px;
 }
 
 .form{

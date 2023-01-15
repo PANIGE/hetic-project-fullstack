@@ -41,7 +41,7 @@ class planing extends Component {
                                 </div>
                             </div>
                             <div>
-                                <h4>transation €</h4>
+                                <h4>transaction €</h4>
                             </div> 
                         </div>
                     </div>
