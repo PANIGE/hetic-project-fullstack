@@ -26,7 +26,7 @@ class report extends Component {
 
                 <h1>Report</h1>
                 
-                <div id='allPlaning'>
+                <div id='allReport'>
                     <div className='card'>
                         <div className='cardTitle'>
                             <h4>{this.state.post.title} | by  </h4>

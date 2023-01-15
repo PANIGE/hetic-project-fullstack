@@ -1,4 +1,4 @@
-#allPlaning .card{
+#allReport .card{
     background-color: rgba(38, 38, 38, 0.5);
     padding: 10px;
     border-radius: 10px;
@@ -89,4 +89,22 @@
 
 .vueLink{
     display: flex;
+}
+
+#allReport{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+@media screen and (max-width: 1200px){
+    #allReport{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+    
+@media screen and (max-width: 800px){
+    #allReport{
+        grid-template-columns: 1fr;
+    }
 }

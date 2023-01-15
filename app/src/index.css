@@ -611,11 +611,9 @@ input[type=submit]{
 .form{
     position: fixed;
     top: 5vw;
-    left: 5vw;
-    right: 5vw;
+    left: 25vw;
+    right: 25vw;
     bottom: 5vw;
-    width: 90vw;
-    Height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -623,7 +621,7 @@ input[type=submit]{
     backdrop-filter: blur(15px);
     z-index: 2;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 20px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 10px 20px;
 }
 
 .form form{
@@ -639,3 +637,13 @@ input[type=submit]{
 .form form div{
     width: 100%;
 }
+
+@media screen and (max-width: 800px) {
+    .form{
+        top: 10vw;
+        left: 10vw;
+        right: 10vw;
+        bottom: 10vw;
+    }
+}
+    
